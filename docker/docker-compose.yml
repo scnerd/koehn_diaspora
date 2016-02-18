@@ -20,7 +20,7 @@ diaspora:
     - redis
   volumes:
     - ../data/diaspora:/home/diaspora/diaspora
-  expose:
+  ports:
     - "3000"
   working_dir: /home/diaspora
   privileged: true
