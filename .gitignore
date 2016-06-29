@@ -1,3 +1,4 @@
 data/*
 log
-**/.AppleDouble
+.DS_Store
+.AppleDouble
