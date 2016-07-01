@@ -1,5 +1,6 @@
 job: 
   stage: test
   script: 
+    - cd docker
     - docker-compose run diaspora setup
     - docker-compose run diaspora init-db
