@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 function do_as_diaspora {
 	su -l -c "cd /home/diaspora/diaspora && RAILS_ENV=production DB=postgres $1" diaspora
@@ -26,12 +26,20 @@ function precompile_assets {
 	do_as_diaspora "bin/rake assets:precompile"
 }
 
+function cat {
+	if [ ! -z "$1" ]; then
+		cat > $1
+	fi
+}
+
 echo "Starting docker-entrypoint with argument '$1'"
 
 if [ "$1" = 'run' ]; then
 	run
 elif [ "$1" = 'bundle' ]; then
 	bundle
+elif [ "$1" = 'cat' ]; then
+	cat $2
 elif [ "$1" = 'setup' ]; then
 	setup
 elif [ "$1" = 'init-db' ]; then
