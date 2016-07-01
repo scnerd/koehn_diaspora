@@ -6,3 +6,7 @@ job:
     - cd docker
     - docker-compose run diaspora setup
     - docker-compose run diaspora init-db
+
+after_script:
+  - docker-compose kill
+  - docker-compose rm -vf
