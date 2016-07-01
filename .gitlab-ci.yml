@@ -4,7 +4,7 @@ variables:
 job: 
   stage: test
   script: 
-    - chmod -R 777 .
+    - mkdir -p data/diaspora
     - cd docker
     - docker-compose run diaspora setup
     - docker-compose run diaspora init-db
