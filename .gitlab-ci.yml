@@ -5,7 +5,7 @@ job:
   stage: test
   script: 
     - mkdir -p data/diaspora/diaspora
-    - chcon -Rt svirt_sandbox_file_t data/diaspora
+    - chmod -R 777 .
     - cd docker
     - docker-compose run diaspora setup
     - docker-compose run diaspora init-db
