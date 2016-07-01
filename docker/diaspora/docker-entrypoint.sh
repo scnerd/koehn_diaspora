@@ -11,7 +11,6 @@ function setup {
 function run {
 	echo "Staring Diaspora"
 	do_as_diaspora "./script/server"
-	echo "Really wasn't expecting this"
 }
 
 function bundle {
@@ -20,8 +19,7 @@ function bundle {
 
 function init_db {
 	do_as_diaspora "bin/rake db:create db:schema:load" && \
-	  precompile_assets && \
-	  run
+	  precompile_assets 
 }
 
 function precompile_assets {
@@ -38,6 +36,8 @@ elif [ "$1" = 'setup' ]; then
 	setup
 elif [ "$1" = 'init-db' ]; then
 	init_db
+elif [ "$1" = 'precompile' ]; then
+	precompile_assets
 elif [ "$1" = 'upgrade' ]; then
 	do_as_diaspora "rvm update"
 	do_as_diaspora "git checkout Gemfile.lock db/schema.rb && git pull && cd .. && cd - && gem install bundler && bin/bundle && bin/rake db:migrate "
