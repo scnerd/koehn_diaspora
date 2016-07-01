@@ -4,7 +4,7 @@ variables:
 job: 
   stage: test
   script: 
-    - mkdir -p data/diaspora
+    - mkdir -p data/diaspora/diaspora
     - cd docker
     - docker-compose run diaspora setup
     - docker-compose run diaspora init-db
