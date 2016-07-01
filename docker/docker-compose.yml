@@ -22,12 +22,12 @@ services:
       - postgres
       - redis
     volumes:
-      - ../data/diaspora:/home/diaspora/
-      - ../config/diaspora:/config
+      - diaspora:/home/diaspora/
     ports:
-      - "3000"
+      - "3000:3000"
     working_dir: /home/diaspora
     privileged: true
+    command: run
 
 volumes:
   postgres:
