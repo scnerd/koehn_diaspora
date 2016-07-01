@@ -8,5 +8,6 @@ job:
     - docker-compose run diaspora init-db
 
 after_script:
+  - cd docker
   - docker-compose kill
   - docker-compose rm -vf
