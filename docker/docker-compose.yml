@@ -21,6 +21,8 @@ services:
     links:
       - postgres
       - redis
+    volumes:
+      - diaspora:/home/diaspora/
     ports:
       - "3000:3000"
     working_dir: /home/diaspora
