@@ -5,9 +5,8 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB8
   rvm autolibs read-fail && \
   rvm install 2.1 && \
   cd ~ && \
+  rm -rf diaspora ; \
   git clone -b master git://github.com/diaspora/diaspora.git && \
   cd diaspora && \
-  ln -s remote-config/database.yml config/database.yml && \
-  ln -s remote-config/diaspora.yml config/diaspora.yml && \
   gem install bundler && \
   RAILS_ENV=production DB=postgres  bin/bundle install --without test development
