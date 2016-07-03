@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 function do_as_diaspora {
-	su -l -c "cd /home/diaspora/diaspora && export RAILS_ENV=production && export DB=postgres && $1" diaspora
+	su -l -c "cd /home/diaspora/diaspora && RAILS_ENV=production DB=postgres $1" diaspora
 }
 
 function setup {
@@ -14,7 +14,7 @@ function run {
 }
 
 function bundle {
-	do_as_diaspora "git checkout Gemfile.lock && DB=postgres gem install bundler && bin/bundle install --without test development"
+	do_as_diaspora "gem install bundler && bin/bundle install --without test development && gem install pg"
 }
 
 function init_db {
