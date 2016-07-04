@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash --login
 
 function do_as_diaspora {
 	su -l -c "cd /home/diaspora/diaspora && RAILS_ENV=production DB=postgres $1" diaspora
@@ -14,12 +14,13 @@ function run {
 }
 
 function bundle {
-	do_as_diaspora "gem install bundler && bin/bundle install --without test development"
+	do_as_diaspora "gem install bundler"
+	do_as_diaspora "bin/bundle install --without test development"
 }
 
 function init_db {
 	do_as_diaspora "bin/rake db:create db:schema:load" && \
-	  precompile_assets 
+	  precompile_assets
 }
 
 function precompile_assets {
