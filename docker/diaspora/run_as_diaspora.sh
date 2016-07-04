@@ -8,4 +8,5 @@ cd $HOME && \
   rvm autolibs read-fail && \
   rvm install 2.2 && \
   git clone https://github.com/diaspora/diaspora.git && \
+  cd diaspora && \
   git checkout master
