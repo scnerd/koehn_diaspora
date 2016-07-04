@@ -14,7 +14,7 @@ function run {
 }
 
 function bundle {
-	do_as_diaspora "gem install bundler && bin/bundle install --without test development && gem install pg"
+	do_as_diaspora "gem install bundler && bin/bundle install --without test development"
 }
 
 function init_db {

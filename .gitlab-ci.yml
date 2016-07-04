@@ -1,7 +1,8 @@
 job: 
   stage: test
   script: 
-    - mkdir -p data/diaspora/diaspora
+    - rm -rf data/diaspora
+    - mkdir -p data/diaspora
     - chmod -R 777 .
     - cd docker
     - docker-compose build --force-rm --no-cache
