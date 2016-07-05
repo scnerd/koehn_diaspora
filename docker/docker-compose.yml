@@ -29,7 +29,8 @@ services:
     privileged: true
     command: run
     environment:
-      - HOST_UID:${HOST_UID}
+      HOST_UID: ${HOST_UID}
+      HOST_GID: ${HOST_GID}
 
 volumes:
   postgres:
