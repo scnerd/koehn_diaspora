@@ -4,11 +4,13 @@ variables:
 job: 
   stage: test
   script: 
-    - mkdir -p data/diaspora/diaspora
+    - rm -rf data/diaspora
+    - mkdir -p data/diaspora
     - chmod -R 777 .
     - cd docker
-    - docker-compose build --force-rm --no-cache
+    - docker-compose build
     - docker-compose run diaspora setup
+    - cp diaspora/test/* ../data/diaspora/diaspora/config
     - docker-compose run diaspora bundle
     - docker-compose run diaspora init-db
 

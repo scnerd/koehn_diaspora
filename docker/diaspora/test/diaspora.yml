@@ -163,6 +163,8 @@ configuration: ## Section
     #listen: 'unix:tmp/diaspora.sock'
     #listen: 'unix:/run/diaspora/diaspora.sock'
     #listen: '127.0.0.1:3000'
+    listen: '0.0.0.0:3000'
+    port: 3000
 
     ## Set the path for the PID file of the unicorn master process (default=none)
     #pid: '/run/diaspora/diaspora.pid'
@@ -171,6 +173,8 @@ configuration: ## Section
     ## The environment in which the server should be started by default.
     ## Change this to 'production' if you wish to run a production environment.
     #rails_environment: 'development'
+    rails_environment: 'production'
+    database: 'postgres'
 
     ## Write unicorn stderr and stdout log.
     #stderr_log: '/usr/local/app/diaspora/log/unicorn-stderr.log'
