@@ -10,6 +10,8 @@ of Unix, databases, web servers, etc.
 1. Install Docker (Note: on macOS, do *not* use Docker Toolbox, but 
 instead use [Docker for Mac](https://docs.docker.com/docker-for-mac/docker-toolbox/#/the-docker-for-mac-environment)).
 
+2. Install Docker Compose. 
+
 2. Install Git. Future versions of this application will come in downloadable 
 form, but for now this is a must. 
 
