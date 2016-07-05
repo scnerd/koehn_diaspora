@@ -1,15 +1,15 @@
 variables:
   GIT_STRATEGY: clone
 
-job: 
+job:
   stage: test
-  script: 
+  script:
     - rm -rf data/diaspora
     - mkdir -p data/diaspora
     - chmod -R 777 .
     - cd docker
     - export HOST_UID=$(uid -u)
-    - docker-compose build
+    - docker-compose build --force-rm --no-cache
     - docker-compose run diaspora setup
     - cp diaspora/test/* ../data/diaspora/diaspora/config
     - docker-compose run diaspora bundle
