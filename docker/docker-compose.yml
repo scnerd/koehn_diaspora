@@ -28,6 +28,8 @@ services:
     working_dir: /home/diaspora
     privileged: true
     command: run
+    environment:
+      - HOST_UID:$(UID)
 
 volumes:
   postgres:
