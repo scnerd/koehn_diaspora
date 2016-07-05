@@ -15,4 +15,4 @@ form, but for now this is a must.
 
 3. Clone this repository (https://gitlab.koehn.com/bkoehn/diaspora-docker.git).
 
-4. Follow the [Installation Instructions]() of the wiki. 
+4. Follow the [Installation Instructions](https://gitlab.koehn.com/bkoehn/diaspora-docker/wikis/home) of the wiki. 
