@@ -8,7 +8,7 @@ job:
     - mkdir -p data/diaspora
     - chmod -R 777 .
     - cd docker
-    - export UID=$(uid -u)
+    - export HOST_UID=$(uid -u)
     - docker-compose build
     - docker-compose run diaspora setup
     - cp diaspora/test/* ../data/diaspora/diaspora/config
