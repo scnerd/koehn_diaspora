@@ -1,9 +1,10 @@
-#!/bin/bash --login
+#!/bin/bash --login 
 
-USER_ID=${HOST_UID:1000}
-GROUP_ID=${HOST_GID:1000}
+USER_ID=${HOST_UID:=1000}
+GROUP_ID=${HOST_GID:=1000}
 echo "Starting with UID : $USER_ID"
-RUN adduser --gecos "" --disabled-login --uid "${USER_ID}" --gid "${GROUP_ID}" --home /home/diaspora diaspora
+echo "Starting with GID : $GROUP_ID"
+adduser --gecos "" --disabled-login --uid "$USER_ID" --gid "$GROUP_ID" --home /home/diaspora diaspora
 
 function do_as_diaspora {
 	su -l -c "cd /home/diaspora/diaspora && RAILS_ENV=production DB=postgres $1" diaspora
@@ -60,3 +61,4 @@ else
 	echo "Not sure what to do; here have a shell"
 	/bin/bash
 fi
+

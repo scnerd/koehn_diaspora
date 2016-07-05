@@ -6,9 +6,9 @@ job:
   script:
     - rm -rf data/diaspora
     - mkdir -p data/diaspora
-    - chmod -R 777 .
     - cd docker
-    - export HOST_UID=$(uid -u)
+    - export HOST_UID=$(id -u)
+    - export HOST_GID=$(id -g)
     - docker-compose build --force-rm --no-cache
     - docker-compose run diaspora setup
     - cp diaspora/test/* ../data/diaspora/diaspora/config
