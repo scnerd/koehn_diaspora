@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export HOST_UID=$(id -u)
+export HOST_GID=$(id -g)
+
+#
+# Set up the containers and data directories.
+
+cd docker
+
+docker-compose up

@@ -23,7 +23,7 @@ function run {
 
 function bundle {
 	do_as_diaspora "gem install bundler"
-	do_as_diaspora "bin/bundle install --without test development" ||	do_as_diaspora "bin/bundle install --without test development"
+	do_as_diaspora "bin/bundle install -j4 --without test development" ||	do_as_diaspora "bin/bundle install --without test development"
 }
 
 function init_db {
