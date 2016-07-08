@@ -5,7 +5,7 @@ job:
   stage: test
   script:
     - bin/init
-    - cp diaspora/test/* ../data/diaspora/diaspora/config
+    - cp docker/diaspora/test/* data/diaspora/diaspora/config
     - bin/bundle
     - bin/init-db
 
