@@ -4,18 +4,13 @@ variables:
 job:
   stage: test
   script:
-    - rm -rf data/diaspora
-    - mkdir -p data/diaspora
-    - cd docker
-    - export HOST_UID=$(id -u)
-    - export HOST_GID=$(id -g)
-    - docker-compose build --force-rm --no-cache
-    - docker-compose run diaspora setup
+    - bin/init
     - cp diaspora/test/* ../data/diaspora/diaspora/config
-    - docker-compose run diaspora bundle
-    - docker-compose run diaspora init-db
+    - bin/bundle
+    - bin/init-db
 
 after_script:
   - cd docker
   - docker-compose kill
   - docker-compose rm -vf
+  - rm -rf data/diaspora
