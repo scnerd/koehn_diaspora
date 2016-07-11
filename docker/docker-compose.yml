@@ -23,6 +23,7 @@ services:
       - redis
     volumes:
       - ../data/diaspora:/home/diaspora/
+      - ../data/backups:/backups
     ports:
       - "3000:3000"
     working_dir: /home/diaspora
