@@ -1,13 +1,14 @@
 version: '2'
 services:
   postgres:
-    image: postgres:9.5
+    image: postgres:9.4
     environment:
       - POSTGRES_USER=diaspora
       - POSTGRES_PASSWORD=diaspora
       - POSTGRES_DB=diaspora_production
     volumes:
       - postgres:/var/lib/postgresql/data
+      - ./postgres:/docker-entrypoint-initdb.d
     privileged: true
 
   redis:
@@ -23,6 +24,7 @@ services:
       - redis
     volumes:
       - ../data/diaspora:/home/diaspora/
+      - ../data/backups:/backups
     ports:
       - "3000:3000"
     working_dir: /home/diaspora

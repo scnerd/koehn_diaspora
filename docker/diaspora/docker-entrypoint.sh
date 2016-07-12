@@ -2,6 +2,7 @@
 
 USER_ID=${HOST_UID:=1000}
 GROUP_ID=${HOST_GID:=1000}
+
 echo "Starting with UID : $USER_ID"
 echo "Starting with GID : $GROUP_ID"
 
@@ -41,6 +42,20 @@ function cat {
 	fi
 }
 
+function backup {
+    echo "diaspora:5432:diaspora_production:diaspora:diaspora" > $HOME/.pgpass
+    chmod 600 $HOME/.pgpass
+    
+	BACKUP_TMP_DIR=/tmp/backups
+
+	mkdir $BACKUP_TMP_DIR
+	BACKUPFILE=$BACKUP_TMP_DIR/postgres
+	pg_basebackup -h postgres -U diaspora -x -P -D $BACKUPFILE && \
+	rsync -a /home/diaspora $BACKUP_TMP_DIR && \
+	cd $BACKUP_TMP_DIR && \
+	tar czf /backups/diaspora-backups-`date +%Y-%m-%dT%H:%M:%S`.tgz .
+}
+
 echo "Starting docker-entrypoint with argument '$1'"
 
 if [ "$1" = 'run' ]; then
@@ -55,6 +70,8 @@ elif [ "$1" = 'init-db' ]; then
 	init_db
 elif [ "$1" = 'precompile' ]; then
 	precompile_assets
+elif [ "$1" = 'backup' ]; then
+	backup
 elif [ "$1" = 'upgrade' ]; then
 	do_as_diaspora "rvm update"
 	do_as_diaspora "git checkout Gemfile.lock db/schema.rb && git pull && cd .. && cd - && gem install bundler && bin/bundle && bin/rake db:migrate "
