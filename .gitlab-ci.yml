@@ -8,6 +8,7 @@ job:
     - cp docker/diaspora/test/* data/diaspora/diaspora/config
     - bin/bundle
     - bin/init-db
+    - bin/backup
 
 after_script:
   - cd docker
