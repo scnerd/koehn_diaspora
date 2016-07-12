@@ -6,6 +6,8 @@ COPY run_as_diaspora.sh /run_as_diaspora.sh
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
+COPY backup.sh /backup.sh
+
 VOLUME /config
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
