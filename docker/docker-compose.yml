@@ -18,7 +18,8 @@ services:
       - redis:/data
 
   diaspora:
-    build: diaspora
+    #build: diaspora
+    from: registry.gitlab.koehn.com:443/bkoehn/diaspora-docker:latest
     links:
       - postgres
       - redis
