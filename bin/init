@@ -3,7 +3,7 @@
 export HOST_UID=$(id -u)
 export HOST_GID=$(id -g)
 
-mkdir -p data/backup
+mkdir -p data/backups
 
 chown -R $HOST_UID:$HOST_GID data/backup
 

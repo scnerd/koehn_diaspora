@@ -10,4 +10,4 @@ BACKUPFILE=$BACKUP_TMP_DIR/postgres
 pg_basebackup -h postgres -U diaspora -x -P -D $BACKUPFILE && \
 rsync -a /home/diaspora $BACKUP_TMP_DIR && \
 cd $BACKUP_TMP_DIR && \
-tar czvf /backups/diaspora-backups-`date +%Y-%m-%dT%H:%M:%S`.tgz .
+tar czf /backups/diaspora-backups-`date +%Y-%m-%dT%H:%M:%S`.tgz .
