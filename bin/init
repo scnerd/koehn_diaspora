@@ -3,6 +3,10 @@
 export HOST_UID=$(id -u)
 export HOST_GID=$(id -g)
 
+mkdir -p data/backups
+
+chown -R "$HOST_UID":"$HOST_GID" data/backups
+
 #
 # Set up the containers and data directories.
 

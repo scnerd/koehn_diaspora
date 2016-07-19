@@ -36,24 +36,8 @@ function precompile_assets {
 	do_as_diaspora "bin/rake assets:precompile"
 }
 
-function cat {
-	if [ ! -z "$1" ]; then
-		cat > $1
-	fi
-}
-
 function backup {
-    echo "diaspora:5432:diaspora_production:diaspora:diaspora" > $HOME/.pgpass
-    chmod 600 $HOME/.pgpass
-    
-	BACKUP_TMP_DIR=/tmp/backups
-
-	mkdir $BACKUP_TMP_DIR
-	BACKUPFILE=$BACKUP_TMP_DIR/postgres
-	pg_basebackup -h postgres -U diaspora -x -P -D $BACKUPFILE && \
-	rsync -a /home/diaspora $BACKUP_TMP_DIR && \
-	cd $BACKUP_TMP_DIR && \
-	tar czf /backups/diaspora-backups-`date +%Y-%m-%dT%H:%M:%S`.tgz .
+	su -l -c "/backup.sh" diaspora
 }
 
 echo "Starting docker-entrypoint with argument '$1'"
@@ -62,8 +46,6 @@ if [ "$1" = 'run' ]; then
 	run
 elif [ "$1" = 'bundle' ]; then
 	bundle
-elif [ "$1" = 'cat' ]; then
-	cat $2
 elif [ "$1" = 'setup' ]; then
 	setup
 elif [ "$1" = 'init-db' ]; then
