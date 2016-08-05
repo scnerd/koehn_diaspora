@@ -13,7 +13,9 @@ instead use [Docker for Mac](https://docs.docker.com/docker-for-mac/docker-toolb
 2. Install Docker Compose. 
 
 2. Install Git. Future versions of this application will come in downloadable 
-form, but for now this is a must. 
+form, but for now this is a must. (**Note:** you can download the [latest 
+release](https://gitlab.koehn.com/bkoehn/diaspora-docker/repository/archive.zip?ref=master)
+of Diaspora Docker without using Git. But upgrades are much, much harder.)
 
 3. Clone this repository (https://gitlab.koehn.com/bkoehn/diaspora-docker.git).
 
