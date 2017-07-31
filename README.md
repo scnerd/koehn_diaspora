@@ -19,4 +19,10 @@ of Diaspora Docker without using Git. But upgrades are much, much harder.)
 
 3. Clone this repository (https://gitlab.koehn.com/bkoehn/diaspora-docker.git).
 
-4. Follow the [Installation Instructions](https://gitlab.koehn.com/bkoehn/diaspora-docker/wikis/home) of the wiki. 
+4. Run `docker build .` from the project's main directory.
+
+5. Download (or preferably, fork) your own copy of diaspora to a local directory.
+
+6. Set up a database, redis, etc (see the `docker-compose.yml` for an easy way to do this).
+
+7. Configure diaspora to use the database, redis, etc you set up above.
