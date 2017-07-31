@@ -1,3 +1,0 @@
-#!/bin/bash
-
-docker push registry.gitlab.koehn.com:443/bkoehn/diaspora-docker

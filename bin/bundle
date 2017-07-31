@@ -1,8 +1,0 @@
-#!/bin/bash
-
-export HOST_UID=$(id -u)
-export HOST_GID=$(id -g)
-
-cd docker
-
-docker-compose run diaspora bundle

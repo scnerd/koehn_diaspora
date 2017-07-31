@@ -1,4 +1,0 @@
-#!/bin/bash
-
-docker build -t registry.gitlab.koehn.com:443/bkoehn/diaspora-docker .
-
