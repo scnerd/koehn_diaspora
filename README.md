@@ -23,6 +23,6 @@ of Diaspora Docker without using Git. But upgrades are much, much harder.)
 
 5. Download (or preferably, fork) your own copy of diaspora to a local directory.
 
-6. Set up a database, redis, etc (see the `docker-compose.yml` for an easy way to do this).
+6. Set up a database, redis, etc (see the [`docker-compose.yml`](https://gitlab.koehn.com/bkoehn/diaspora-docker/raw/master/docker-compose.yml) for an easy way to do this).
 
 7. Configure diaspora to use the database, redis, etc you set up above.
