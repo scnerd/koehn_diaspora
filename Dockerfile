@@ -1,5 +1,7 @@
 FROM debian:jessie-backports
 
+ARG GIT_URL
+
 RUN apt-get update && \
 	apt-get install -y -qq \
 	cmake \
