@@ -47,11 +47,6 @@ RUN cd /home/diaspora && \
 USER root
 
 RUN chown -R diaspora:diaspora /home/diaspora/diaspora && \
-#    apt-get remove -y -qq \
-#    cmake \
-#    build-essential \
-#    git \
-#    autoconf ** && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists /tmp/* /var/tmp/*
 
