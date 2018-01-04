@@ -13,16 +13,13 @@ instead use [Docker for Mac](https://docs.docker.com/docker-for-mac/docker-toolb
 2. Install Docker Compose. 
 
 2. Install Git. Future versions of this application will come in downloadable 
-form, but for now this is a must. (**Note:** you can download the [latest 
-release](https://gitlab.koehn.com/bkoehn/diaspora-docker/repository/archive.zip?ref=master)
+form, but for now this is a must. (**Note:** you can download the [latest release](https://gitlab.koehn.com/bkoehn/diaspora-docker/repository/archive.zip?ref=master)
 of Diaspora Docker without using Git. But upgrades are much, much harder.)
 
-3. Clone this repository (https://gitlab.koehn.com/bkoehn/diaspora-docker.git).
+3. Either clone this repository (https://gitlab.koehn.com/bkoehn/diaspora-docker.git) and run `docker build .` from the project's main directory; **OR**
 
-4. Run `docker build .` from the project's main directory.
+4. Run `docker pull koehn/diaspora:latest`.
 
-5. Download (or preferably, fork) your own copy of diaspora to a local directory.
+5. Set up a database, redis, etc (see the [compose directory](https://gitlab.koehn.com/bkoehn/diaspora-docker/tree/master/compose) for an easy way to do this). 
 
-6. Set up a database, redis, etc (see the [`docker-compose.yml`](https://gitlab.koehn.com/bkoehn/diaspora-docker/raw/master/docker-compose.yml) for an easy way to do this).
-
-7. Configure diaspora to use the database, redis, etc you set up above.
+6. Configure diaspora to use the database, redis, etc you set up above. Again, the [docker-compose configuration](https://gitlab.koehn.com/bkoehn/diaspora-docker/tree/master/compose) file does this all for you. 
