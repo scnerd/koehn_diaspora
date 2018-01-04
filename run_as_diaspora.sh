@@ -7,4 +7,4 @@ cd $HOME && \
   echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> $HOME/.bashrc && \
   source "/home/diaspora/.rvm/scripts/rvm" && \
   rvm autolibs read-fail && \
-  rvm install 2.3 
+  rvm install 2.4.1 
