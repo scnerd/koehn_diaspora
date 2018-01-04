@@ -48,8 +48,12 @@ USER root
 
 RUN chown -R diaspora:diaspora /home/diaspora/diaspora && \
 	apt-get clean && \
-	rm -rf /var/lib/apt/lists /tmp/* /var/tmp/*
+	rm -rf /var/lib/apt/lists /tmp/* /var/tmp/* /run_as_diaspora.sh /install_diaspora.sh
 
 USER diaspora
 
-copy startup.sh /home/diaspora/startup.sh
+COPY startup.sh /home/diaspora/startup.sh
+
+WORKDIR /home/diaspora/diaspora
+
+CMD ./startup.sh
