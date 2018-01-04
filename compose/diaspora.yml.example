@@ -185,7 +185,7 @@ configuration: ## Section
     ## Rails environment (default='development').
     ## The environment in which the server should be started by default.
     ## Change this to 'production' if you wish to run a production environment.
-    #rails_environment: 'development'
+    rails_environment: 'production'
 
     ## Write unicorn stderr and stdout log.
     #stderr_log: '/usr/local/app/diaspora/log/unicorn-stderr.log'
