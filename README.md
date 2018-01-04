@@ -18,7 +18,7 @@ of Diaspora Docker without using Git. But upgrades are much, much harder.)
 
 3. Either clone this repository (https://gitlab.koehn.com/bkoehn/diaspora-docker.git) and run `docker build .` from the project's main directory; **OR**
 
-4. Run `docker pull koehn/diaspora:latest`.
+4. Run `docker pull koehn/diaspora:latest` to use an image pre-built from the latest Diaspora source code. 
 
 5. Set up a database, redis, etc (see the [compose directory](https://gitlab.koehn.com/bkoehn/diaspora-docker/tree/master/compose) for an easy way to do this). 
 

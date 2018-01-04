@@ -1,6 +1,6 @@
 FROM debian:jessie-backports
 
-ARG GIT_URL
+ARG GIT_URL=https://github.com/diaspora/diaspora.git
 
 RUN apt-get update && \
 	apt-get install -y -qq \
