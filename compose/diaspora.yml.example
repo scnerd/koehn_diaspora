@@ -51,6 +51,7 @@ configuration: ## Section
     #redis: 'redis://example_host'
     #redis: 'redis://username:password@host:6379/0'
     #redis: 'unix:///tmp/redis.sock'
+    redis: 'redis://redis'
 
     ## Require SSL (default=true).
     ## When set, your pod will force the use of HTTPS in production mode.
@@ -176,6 +177,7 @@ configuration: ## Section
     #listen: 'unix:tmp/diaspora.sock'
     #listen: 'unix:/run/diaspora/diaspora.sock'
     #listen: '127.0.0.1:3000'
+    listen: '0.0.0.0:3000'
 
     ## Set the path for the PID file of the unicorn master process (default=tmp/pids/web.pid)
     #pid: 'tmp/pids/web.pid'
