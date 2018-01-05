@@ -23,10 +23,29 @@ instead use [Docker for Mac](https://docs.docker.com/docker-for-mac/docker-toolb
 This project builds an image that follows the [official wiki instructions](https://wiki.diasporafoundation.org/Installation/Debian/Jessie)
 for installing Diaspora on Debian. By default, it uses the [current Diaspora code](https://github.com/diaspora/diaspora/tree/master)
 to drive the installation process, but you can build an image based off of another 
-repository/branch by specifying your own `GIT_URL` as a build argument. 
+repository/branch by specifying your own `GIT_URL` and `GIT_BRANCH` as build arguments: 
+the URL to fetch the repository from and the branch or tag to fetch, respectively. 
 
 The resulting image will include all the diaspora code, RVM, Postgres Driver, package dependencies, 
 Ruby Gems, etc. It creates and uses a `diaspora` user in the image, under which the
 code is actually run. All you need to supply is a database and redis server (again,
 using the files supplied in the [compose directory](https://gitlab.koehn.com/bkoehn/diaspora-docker/tree/master/compose)
 is the simplest way to go about this). 
+
+# How to customize to make your own image:
+
+You can, by changing some build arguments, make an image for a particular branch or tag
+(e.g., `develop` or a tag like `0.7.2.0`) in any git repository. No code change is required, just
+build with `--build-args GIT_BRANCH=develop` or `--build-args GIT_URL=[your repository URL].
+You can also customize the version of Ruby included by setting
+for example  `--build-args RUBY_VERSION=2.5`. This could easily be used for automated
+testing of your changes, or for building a Docker image based on your customized version
+of the Diaspora code. 
+
+# How images are produced:
+
+When a new version of Diaspora is released, I run this build and specify a `GIT_BRANCH` 
+corresponding to the tag of the release. I then publish the build into my own personal
+repository on Docker Hub, tagged with that version and `latest`. There's currently no 
+automation behind this; I just notice that a new build was released and create a corresponding
+new image. 

@@ -4,9 +4,9 @@ The enclosed `Dockerfile` and `docker-compose.yml` file can be used to run your 
 pod in its own containerized environment. 
 
 # Steps to use this configuration
-1. Edit the `diaspora.yml.example` file to suit your pod (hint: you must change the URL!)
-2. Customize the `database.yml` file to
-use a different password than `somepassword`
+1. Edit the `diaspora.yml.example` file to suit your pod (hint: you must change the URL!),
+   and rename the file `diaspora.yml`.
+2. Customize the `database.yml` file to use a different password than `somepassword`
 3. Change the `docker-compose.yml` file so that the postgres database uses the same password
 
 Once that's done, you can run the pod with `docker-compose up -d`. The data in the database
