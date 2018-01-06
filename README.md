@@ -36,7 +36,7 @@ is the simplest way to go about this).
 
 You can, by changing some build arguments, make an image for a particular branch or tag
 (e.g., `develop` or a tag like `0.7.2.0`) in any git repository. No code change is required, just
-build with `--build-args GIT_BRANCH=develop` or `--build-args GIT_URL=[your repository URL].
+build with `--build-args GIT_BRANCH=develop` or `--build-args GIT_URL=[your repository URL]`.
 You can also customize the version of Ruby included by setting
 for example  `--build-args RUBY_VERSION=2.5`. This could easily be used for automated
 testing of your changes, or for building a Docker image based on your customized version
