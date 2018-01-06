@@ -1,4 +1,4 @@
-FROM debian:jessie-backports
+FROM debian:jessie-backports as build
 
 ARG GIT_URL=https://github.com/diaspora/diaspora.git
 ARG GIT_BRANCH=master
@@ -39,14 +39,42 @@ RUN apt-get update && \
     adduser --gecos "" --disabled-login --home /home/diaspora diaspora && \
     su diaspora -c 'cd /home/diaspora && /run_as_diaspora.sh' && \
     su diaspora -c 'cd /home/diaspora && /install_diaspora.sh' && \
-    chown -R diaspora:diaspora /home/diaspora/diaspora && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists /tmp/* /var/tmp/* /run_as_diaspora.sh /install_diaspora.sh
+    rm -rf /home/diaspora/diaspora/.git && \
+    chown -R diaspora:diaspora /home/diaspora
 	
-USER diaspora
-
 COPY startup.sh /home/diaspora/startup.sh
+
+FROM debian:jessie
+
+RUN adduser --gecos "" --disabled-login --home /home/diaspora diaspora 
+
+COPY --chown=diaspora:diaspora --from=build /home/diaspora /home/diaspora
+
+RUN apt-get update && \
+        apt-get install -y -qq \
+        postgresql-client \
+        imagemagick \
+        libyaml-0-2 \
+        libgmp10 \
+        libssl1.0.0 \ 
+        libxml2 \ 
+        libxslt1.1 \
+        libpq5 \ 
+        libmagickwand-6.q16-2 \
+        libreadline6 \ 
+        libsqlite3-0 \ 
+        libgdbm3 \ 
+        libncurses5 \
+        ghostscript \
+        curl \
+        nodejs \
+        gawk \
+        sqlite3 && \
+    rm -rf /var/lib/apt/lists /tmp/* /var/tmp/* 
+
+USER diaspora
 
 WORKDIR /home/diaspora/diaspora
 
 CMD ./startup.sh
+
