@@ -3,6 +3,10 @@ FROM debian:jessie-backports
 ARG GIT_URL=https://github.com/diaspora/diaspora.git
 ARG GIT_BRANCH=master
 ARG RUBY_VERSION=2.4.1
+ARG DEBIAN_FRONTEND=noninteractive
+
+COPY run_as_diaspora.sh /run_as_diaspora.sh
+COPY install_diaspora.sh /install_diaspora.sh
 
 RUN apt-get update && \
 	apt-get install -y -qq \
@@ -31,27 +35,14 @@ RUN apt-get update && \
 	libncurses5-dev \
 	automake \
 	bison \
-	libffi-dev
-
-RUN adduser --gecos "" --disabled-login --home /home/diaspora diaspora
+	libffi-dev && \
+    adduser --gecos "" --disabled-login --home /home/diaspora diaspora && \
+    su diaspora -c 'cd /home/diaspora && /run_as_diaspora.sh' && \
+    su diaspora -c 'cd /home/diaspora && /install_diaspora.sh' && \
+    chown -R diaspora:diaspora /home/diaspora/diaspora && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists /tmp/* /var/tmp/* /run_as_diaspora.sh /install_diaspora.sh
 	
-COPY run_as_diaspora.sh /run_as_diaspora.sh
-COPY install_diaspora.sh /install_diaspora.sh
-
-USER diaspora
-
-RUN cd /home/diaspora && \
-    /run_as_diaspora.sh
-
-RUN cd /home/diaspora && \
-    /install_diaspora.sh
-
-USER root
-
-RUN chown -R diaspora:diaspora /home/diaspora/diaspora && \
-	apt-get clean && \
-	rm -rf /var/lib/apt/lists /tmp/* /var/tmp/* /run_as_diaspora.sh /install_diaspora.sh
-
 USER diaspora
 
 COPY startup.sh /home/diaspora/startup.sh
