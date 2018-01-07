@@ -3,6 +3,7 @@ FROM debian:jessie-backports as build
 ARG GIT_URL=https://github.com/diaspora/diaspora.git
 ARG GIT_BRANCH=master
 ARG RUBY_VERSION=2.4.1
+ARG GEM_VERSION=2.6.14
 ARG DEBIAN_FRONTEND=noninteractive
 
 COPY run_as_diaspora.sh /run_as_diaspora.sh
