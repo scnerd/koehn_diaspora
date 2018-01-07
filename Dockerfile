@@ -6,7 +6,6 @@ ARG RUBY_VERSION=2.4.1
 ARG DEBIAN_FRONTEND=noninteractive
 
 COPY run_as_diaspora.sh /run_as_diaspora.sh
-COPY install_diaspora.sh /install_diaspora.sh
 
 RUN apt-get update && \
 	apt-get install -y -qq \
@@ -38,7 +37,6 @@ RUN apt-get update && \
 	libffi-dev && \
     adduser --gecos "" --disabled-login --home /home/diaspora diaspora && \
     su diaspora -c 'cd /home/diaspora && /run_as_diaspora.sh' && \
-    su diaspora -c 'cd /home/diaspora && /install_diaspora.sh' && \
     rm -rf /home/diaspora/diaspora/.git && \
     chown -R diaspora:diaspora /home/diaspora
 	
