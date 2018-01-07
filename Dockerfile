@@ -42,7 +42,7 @@ RUN apt-get update && \
 	
 COPY startup.sh /home/diaspora/startup.sh
 
-FROM debian:jessie
+FROM debian:jessie-backports
 
 RUN adduser --gecos "" --disabled-login --home /home/diaspora diaspora 
 
