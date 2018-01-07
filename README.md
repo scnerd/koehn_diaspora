@@ -5,7 +5,7 @@ collection of Docker containers. It allows users to run
 Diaspora with a minimum of system administration, and a minimum of knowledge
 of Unix, databases, web servers, etc. 
 
-# To use this project:
+# To use this project
 
 1. Install Docker and (optionally) install Docker Compose. 
 
@@ -15,7 +15,7 @@ of Unix, databases, web servers, etc.
 
 5. Configure diaspora to use the database, redis, etc you set up above. Again, the [docker-compose configuration](https://gitlab.koehn.com/bkoehn/diaspora-docker/tree/master/compose) file does this all for you. 
 
-# What this project does:
+# What this project does
 
 This project builds an image that follows the [official wiki instructions](https://wiki.diasporafoundation.org/Installation/Debian/Jessie)
 for installing Diaspora on Debian. By default, it uses the [current Diaspora code](https://github.com/diaspora/diaspora/tree/master)
@@ -35,11 +35,11 @@ You can pull the latest version into your machine using `docker pull koehn/diasp
 The next time you start your application you'll get the latest build, and the latest set
 of database migrations will be installed automatically.
 
-# How to customize to make your own image:
+# Customizing your own image
 
 The Dockerfile accepts several build arguments to customize the build:
 
-`GIT_URL`  
+`GIT_URL`
 : Specifies the repository from which the Diaspora code should be cloned. Defaults to
 the official Diaspora Git Repository (https://github.com/diaspora/diaspora.git)
 
@@ -59,7 +59,7 @@ your own images. When building your image with `docker build`, simply specify th
 you want with `--build-arg [argument]=[value]` e.g., 
 `docker build --build-arg GIT_BRANCH=develop .`. 
 
-# How "official" images are produced:
+# How "official" images are produced
 
 When a new version of Diaspora is released, I run this build and specify a `GIT_BRANCH` 
 corresponding to the tag of the release. I then publish the build into my own personal
