@@ -37,7 +37,7 @@ RUN apt-get update && \
 	bison \
 	libffi-dev && \
     adduser --gecos "" --disabled-login --home /home/diaspora diaspora && \
-    su diaspora -c 'cd /home/diaspora && /run_as_diaspora.sh' && \
+    su diaspora -c '/run_as_diaspora.sh' && \
     rm -rf /home/diaspora/diaspora/.git && \
     chown -R diaspora:diaspora /home/diaspora
 	
