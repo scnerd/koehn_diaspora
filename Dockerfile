@@ -76,6 +76,7 @@ RUN apt-get update && \
         curl \
         nodejs \
         gawk \
+        procps \
         sqlite3 && \
     rm -rf /var/lib/apt/lists /tmp/* /var/tmp/* 
 
