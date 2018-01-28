@@ -1,4 +1,4 @@
-FROM debian:stretch-slim as build
+FROM debian:jessie-backports as build
 
 ARG GIT_URL=https://github.com/diaspora/diaspora.git
 ARG GIT_BRANCH=master
@@ -7,10 +7,6 @@ ARG GEM_VERSION=2.6.14
 ARG DEBIAN_FRONTEND=noninteractive
 
 COPY run_as_diaspora.sh /run_as_diaspora.sh
-
-# hack to make postgresql-client install work on slim
-RUN mkdir -p /usr/share/man/man1 \
-    && mkdir -p /usr/share/man/man7
 
 RUN apt-get update && \
 	apt-get install -y -qq \
@@ -47,15 +43,11 @@ RUN apt-get update && \
 	
 COPY startup.sh /home/diaspora/startup.sh
 
-FROM debian:stretch-slim
+FROM debian:jessie-backports
 
 RUN adduser --gecos "" --disabled-login --home /home/diaspora diaspora 
 
 COPY --chown=diaspora:diaspora --from=build /home/diaspora /home/diaspora
-
-# hack to make postgresql-client install work on slim
-RUN mkdir -p /usr/share/man/man1 \
-    && mkdir -p /usr/share/man/man7
 
 RUN apt-get update && \
         apt-get install -y -qq \
@@ -63,12 +55,12 @@ RUN apt-get update && \
         imagemagick \
         libyaml-0-2 \
         libgmp10 \
-        libssl1.0.2 \
+        libssl1.0.0 \ 
         libxml2 \ 
         libxslt1.1 \
         libpq5 \ 
-        libmagickwand-6.q16-3 \
-        libreadline7 \
+        libmagickwand-6.q16-2 \
+        libreadline6 \ 
         libsqlite3-0 \ 
         libgdbm3 \ 
         libncurses5 \
