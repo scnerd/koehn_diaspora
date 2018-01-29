@@ -1,5 +1,5 @@
 FROM debian:stretch-slim as build
-
+ 
 ARG GIT_URL=https://github.com/diaspora/diaspora.git
 ARG GIT_BRANCH=master
 ARG RUBY_VERSION=2.4
