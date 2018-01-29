@@ -43,7 +43,7 @@ RUN apt-get update && \
 	
 COPY startup.sh /home/diaspora/startup.sh
 
-FROM debian:jessie-backports
+FROM debian:stretch-slim
 
 RUN adduser --gecos "" --disabled-login --home /home/diaspora diaspora 
 
