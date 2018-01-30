@@ -43,6 +43,7 @@ RUN apt-get update && \
     adduser --gecos "" --disabled-login --home /home/diaspora diaspora && \
     su diaspora -c '/run_as_diaspora.sh' && \
     rm -rf /home/diaspora/diaspora/.git && \
+    cd /home/diaspora/diaspora/vendor/bundle/ruby/2.4.0/gems && find . -name spec -exec rm -rf {} \+ && \
     chown -R diaspora:diaspora /home/diaspora
 	
 COPY startup.sh /home/diaspora/startup.sh
