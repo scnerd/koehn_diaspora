@@ -42,9 +42,12 @@ RUN apt-get update && \
 	libffi-dev && \
     adduser --gecos "" --disabled-login --home /home/diaspora diaspora && \
     su diaspora -c '/run_as_diaspora.sh' && \
-    rm -rf /home/diaspora/diaspora/.git && \
-    cd /home/diaspora/diaspora/vendor/bundle/ruby/2.4.0/gems && find . -name spec -exec rm -rf {} \+ && \
     chown -R diaspora:diaspora /home/diaspora
+
+# reduce image size by deleting files unnecessary at runtime
+RUN rm -rf /home/diaspora/diaspora/.git \ 
+           /home/diaspora/diaspora/vendor/bundle/ruby/**/cache && \
+    find /home/diaspora/diaspora/vendor/bundle/ruby -name spec -exec rm -rf {} \+ 
 	
 COPY startup.sh /home/diaspora/startup.sh
 
