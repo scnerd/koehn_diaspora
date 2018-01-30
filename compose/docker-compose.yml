@@ -1,13 +1,14 @@
 version: '2'
 services:
   diaspora:
-    build: 
-      context: .
+    image: koehn/diaspora:latest 
     links:
       - postgres
       - redis
     volumes:
       - diaspora-images:/home/diaspora/diaspora/public/uploads/images
+      - ./diaspora.yml:/home/diaspora/diaspora/config/diaspora.yml:ro
+      - ./database.yml:/home/diaspora/diaspora/config/database.yml:ro
     ports:
       - '3000:3000'
     restart: always

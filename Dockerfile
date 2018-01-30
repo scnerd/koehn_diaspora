@@ -39,10 +39,12 @@ RUN apt-get update && \
 	libncurses5-dev \
 	automake \
 	bison \
-	libffi-dev && \
-    adduser --gecos "" --disabled-login --home /home/diaspora diaspora && \
-    su diaspora -c '/run_as_diaspora.sh' && \
-    chown -R diaspora:diaspora /home/diaspora
+	libffi-dev 
+
+RUN adduser --gecos "" --disabled-login --home /home/diaspora diaspora
+COPY compose/diaspora.yml.example /diaspora.yml
+RUN su diaspora -c '/run_as_diaspora.sh'
+RUN chown -R diaspora:diaspora /home/diaspora
 
 # reduce image size by deleting files unnecessary at runtime
 RUN rm -rf /home/diaspora/diaspora/.git \ 

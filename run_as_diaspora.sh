@@ -17,4 +17,8 @@ cd /home/diaspora && \
   gem uninstall sigar && \
   RAILS_ENV=production bin/bundle install --jobs $(nproc) --deployment --without test development --with postgresql && \
   rvm cleanup all && \
-  tar czf public/source.tar.gz  $(git ls-tree -r ${GIT_BRANCH} | awk '{print $4}')
+  tar czf public/source.tar.gz  $(git ls-tree -r ${GIT_BRANCH} | awk '{print $4}') && \
+  cp /diaspora.yml config/ && \
+  cp config/database.yml.example config/database.yml && \
+  RAILS_ENV=production bin/rake assets:precompile && \
+  rm config/diaspora.yml config/database.yml

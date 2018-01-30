@@ -1,6 +1,6 @@
 # Using Diaspora with docker-compose
 
-The enclosed `Dockerfile` and `docker-compose.yml` file can be used to run your Diaspora
+The enclosed `docker-compose.yml` file can be used to run your Diaspora
 pod in its own containerized environment. 
 
 # Steps to use this configuration
@@ -22,8 +22,8 @@ environment at `http://diaspora:3000`. Some examples are available (on the wiki)
 # Upgrading
 
 From inside the directory containing your `docker-compose.yml` file:
-1. `docker pull koehn/diaspora`
-2. `docker-compose up -d --build`
+1. `docker-compose pull`
+2. `docker-compose up -d`
 
 Current versions of the Diaspora code and all the supplemental packages, Ruby, gems, etc.
 will all be installed, and the database will be automatically upgraded to the current 
