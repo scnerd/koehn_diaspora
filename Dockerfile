@@ -49,7 +49,7 @@ RUN chown -R diaspora:diaspora /home/diaspora
 # reduce image size by deleting files unnecessary at runtime
 RUN rm -rf /home/diaspora/diaspora/.git \ 
            /home/diaspora/diaspora/vendor/bundle/ruby/**/cache && \
-    find /home/diaspora/diaspora/vendor/bundle/ruby -name spec -exec rm -rf {} \+ 
+    find /home/diaspora/diaspora -name spec -exec rm -rf {} \+ 
 	
 COPY startup.sh /home/diaspora/startup.sh
 

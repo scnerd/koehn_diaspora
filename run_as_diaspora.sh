@@ -15,7 +15,7 @@ cd /home/diaspora && \
   gem install bundler && \
   bin/bundle config --local build.sigar '--with-cppflags="-fgnu89-inline"' && \
   gem uninstall sigar && \
-  RAILS_ENV=production bin/bundle install --jobs $(nproc) --deployment --without test development --with postgresql && \
+  RAILS_ENV=production bin/bundle install --no-cache --deployment --without test development --with postgresql && \
   rvm cleanup all && \
   tar czf public/source.tar.gz  $(git ls-tree -r ${GIT_BRANCH} | awk '{print $4}') && \
   cp /diaspora.yml config/ && \
