@@ -16,7 +16,7 @@ services:
   postgres:
     read_only: true
     mem_limit: 8G
-    image: postgres:10.1-alpine
+    image: postgres:10.2-alpine
     tmpfs:
     - /tmp
     environment:
