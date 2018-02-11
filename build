@@ -6,6 +6,8 @@ function usage {
 
 IMAGE_NAME=koehn/diaspora
 
+# NOTE: The BSD version of `getopt` is incompatible with the one this version expects.
+# On MacOS systems, install and use `gnu-getopt`. You have been warned. 
 OPTS=$(getopt -o h -l "image-name:,git-url:,diaspora-version:,ruby-version:,gem-version:" -n 'build' -- "$@") ; err=$?
 
 if [ $err -ne 0 ] ; then usage ; exit 1; fi
