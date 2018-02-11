@@ -78,7 +78,7 @@ your own images. When building your image with `docker build`, simply specify th
 you want with `--build-arg [argument]=[value]` e.g., 
 `docker build --build-arg GIT_BRANCH=develop .`. 
 
-# How "official" images are produced
+# How “official” images are produced
 
 When a new version of Diaspora is released, I run this script twice. Once with the `--diaspora-version` 
 flag set to the current version number, and once without, to build `master` and tag `latest`. It's
