@@ -1,8 +1,6 @@
 #!/bin/bash
 # version="0.1"
 #
-# This is an optional arguments-only example of Argbash potential
-#
 # ARG_OPTIONAL_SINGLE([image-name],[],[name of the docker image to be pushed],[koehn/diaspora])
 # ARG_OPTIONAL_SINGLE([git-url],[],[git URL from which to clone the code])
 # ARG_OPTIONAL_SINGLE([diaspora-version],[],[version of the diaspora code to compile])
