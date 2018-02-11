@@ -19,7 +19,7 @@ DOCKER_TAG=latest
 while true; do
   case "$1" in
     --git-url ) BUILD_ARGS="$BUILD_ARGS --build-arg GIT_URL=$2 "; shift 2 ;;
-    --diaspora-version ) BUILD_ARGS="$BUILD_ARGS --build-arg GIT_BRANCH=v$2 "; shift 2 ;;
+    --diaspora-version ) DOCKER_TAG=$2 ; BUILD_ARGS="$BUILD_ARGS --build-arg GIT_BRANCH=v$2 "; shift 2 ;;
     --ruby-version ) BUILD_ARGS="$BUILD_ARGS --build-arg RUBY_VERSION=$2 "; shift 2 ;;
     --gem-version ) BUILD_ARGS="$BUILD_ARGS --build-arg GEM_VERSION=$2 "; shift 2 ;;
     --image-name ) IMAGE_NAME=$2 ; shift 2 ;;
