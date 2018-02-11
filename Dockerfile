@@ -55,6 +55,8 @@ COPY startup.sh /home/diaspora/startup.sh
 
 FROM debian:stretch-slim
 
+MAINTAINER Brad Koehn <brad@koe.hn>
+
 RUN adduser --gecos "" --disabled-login --home /home/diaspora diaspora 
 
 COPY --chown=diaspora:diaspora --from=build /home/diaspora /home/diaspora
