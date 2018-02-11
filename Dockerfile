@@ -1,11 +1,5 @@
 FROM debian:stretch-slim as build
 
-ARG GIT_URL=https://github.com/diaspora/diaspora.git
-ARG GIT_BRANCH=master
-ARG RUBY_VERSION=2.4
-ARG GEM_VERSION=2.6.14
-ARG DEBIAN_FRONTEND=noninteractive
-
 COPY run_as_diaspora.sh /run_as_diaspora.sh
 
 # hack to make postgresql-client install work on slim
@@ -43,6 +37,13 @@ RUN apt-get update && \
 
 RUN adduser --gecos "" --disabled-login --home /home/diaspora diaspora
 COPY compose/diaspora.yml.example /diaspora.yml
+
+ARG GIT_URL=https://github.com/diaspora/diaspora.git
+ARG GIT_BRANCH=master
+ARG RUBY_VERSION=2.4
+ARG GEM_VERSION=2.6.14
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN su diaspora -c '/run_as_diaspora.sh'
 RUN chown -R diaspora:diaspora /home/diaspora
 
@@ -55,7 +56,10 @@ COPY startup.sh /home/diaspora/startup.sh
 
 FROM debian:stretch-slim
 
-MAINTAINER Brad Koehn <brad@koe.hn>
+ARG DIASPORA_DOCKER_GIT_COMMIT=unspecified
+
+LABEL maintainer="Brad Koehn <brad@koe.hn>"
+LABEL diaspora_docker_git_commit=$DIASPORA_DOCKER_GIT_COMMIT
 
 RUN adduser --gecos "" --disabled-login --home /home/diaspora diaspora 
 

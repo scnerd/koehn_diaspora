@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -e
+
+IMAGE_NAME=koehn/diaspora
+
+OPTS=$(getopt -o h -l "image-name:,git-url:,diaspora-version:,ruby-version:,gem-version:" -n 'build' -- "$@") ; err=$?
+
+if [ $err -ne 0 ] ; then echo "Failed parsing options." >&2 ; exit 1; fi
+
+eval set -- "$OPTS"
+
+DOCKER_TAG=latest
+
+while true; do
+  case "$1" in
+    --git-url ) BUILD_ARGS="$BUILD_ARGS --build-arg GIT_URL=$2 "; shift 2 ;;
+    --diaspora-version ) BUILD_ARGS="$BUILD_ARGS --build-arg GIT_BRANCH=v$2 "; shift 2 ;;
+    --ruby-version ) BUILD_ARGS="$BUILD_ARGS --build-arg RUBY_VERSION=$2 "; shift 2 ;;
+    --gem-version ) BUILD_ARGS="$BUILD_ARGS --build-arg GEM_VERSION=$2 "; shift 2 ;;
+    --image-name ) IMAGE_NAME=$2 ; shift 2 ;;
+    -- ) shift ; break ;;
+    * ) echo "Failed parsing options. $1 is bad" >&2 ; exit 1 ;;
+  esac
+done
+
+BUILD_ARGS="$BUILD_ARGS --build-arg DIASPORA_DOCKER_GIT_COMMIT=`git log -1 --format=%h` "
+
+docker build -t $IMAGE_NAME:$DOCKER_TAG $BUILD_ARGS .
+
+docker push $IMAGE_NAME:$DOCKER_TAG
+
