@@ -35,6 +35,25 @@ You can pull the latest version into your machine using `docker pull koehn/diasp
 The next time you start your application you'll get the latest build, and the latest set
 of database migrations will be installed automatically.
 
+# Making and pushing your own image
+The `build` script included will (on *nix systems) build and push your image. You can run it with the following
+arguments: 
+
+`--git-url url`
+: Sets the URL that is used to fetch your Diaspora code.
+
+`--diaspora-version version`
+: Sets both the git tag used to fetch the Diaspora code you want to build, and sets the label of the image.
+
+`--ruby-version version` 
+: See `RUBY_VERSION`, below.
+
+`--gem-version version`
+: See `GEM_VERSION`, below.
+
+`--image-name`
+: The name of the image pushed. Defaults to `koehn/diaspora`.
+
 # Customizing your own image
 
 The Dockerfile accepts several build arguments to customize the build:
@@ -61,8 +80,6 @@ you want with `--build-arg [argument]=[value]` e.g.,
 
 # How "official" images are produced
 
-When a new version of Diaspora is released, I run this build and specify a `GIT_BRANCH` 
-corresponding to the tag of the release. I then publish the build into my own personal
-repository on Docker Hub, tagged with that version and `latest`. There's currently no 
-automation behind this; I just notice that a new build was released and create a corresponding
-new image. 
+When a new version of Diaspora is released, I run this script twice. Once with the `--diaspora-version` 
+flag set to the current version number, and once without, to build `master` and tag `latest`. It's
+about that simple. 
