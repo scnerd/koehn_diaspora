@@ -25,7 +25,6 @@ while true; do
     --ruby-version ) BUILD_ARGS="$BUILD_ARGS --build-arg RUBY_VERSION=$2 "; shift 2 ;;
     --gem-version ) BUILD_ARGS="$BUILD_ARGS --build-arg GEM_VERSION=$2 "; shift 2 ;;
     --image-name ) IMAGE_NAME=$2 ; shift 2 ;;
-    -- ) shift ; break ;;
     * ) usage ; exit 1 ;;
   esac
 done
