@@ -127,7 +127,7 @@ DOCKER_TAG=latest
 IMAGE_NAME=$_arg_image_name
 
 if [[ ! $_arg_git_url ]] ; then BUILD_ARGS="$BUILD_ARGS --build-arg GIT_URL=$_arg_git_url" ; fi
-if [[ ! $_arg_diaspora-version ]] ; then DOCKER_TAG=$diaspora_version ; BUILD_ARGS="$BUILD_ARGS --build-arg GIT_BRANCH=v$_arg_diaspora_version" ; fi
+if [[ ! $_arg_diaspora_version ]] ; then DOCKER_TAG=$diaspora_version ; BUILD_ARGS="$BUILD_ARGS --build-arg GIT_BRANCH=v$_arg_diaspora_version" ; fi
 if [[ ! $_arg_ruby_version ]] ; then BUILD_ARGS="$BUILD_ARGS --build-arg RUBY_VERSION=$_arg_ruby_version" ; fi
 if [[ ! $_arg_gem_version ]] ; then BUILD_ARGS="$BUILD_ARGS --build-arg GEM_VERSION=$_arg_gem_version" ; fi
 
