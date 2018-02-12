@@ -12,7 +12,7 @@ curl -L https://s.diaspora.software/1t | bash
 echo '[[ -s "/home/diaspora/.rvm/scripts/rvm" ]] && source "/home/diaspora/.rvm/scripts/rvm"' >> /home/diaspora/.bashrc
 source "/home/diaspora/.rvm/scripts/rvm"
 rvm autolibs read-fail
-rvm install ${RUBY_VERSION} -j $(nproc)
+rvm install ${RUBY_VERSION} 
 
 git clone --branch ${GIT_BRANCH} ${GIT_URL}
 cd diaspora
