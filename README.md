@@ -11,9 +11,9 @@ of Unix, databases, web servers, etc.
 
 3. Run `docker pull koehn/diaspora:latest` to use an image pre-built from the latest Diaspora source code. 
 
-4. Set up a database, redis, etc (see the [compose directory](https://gitlab.koehn.com/bkoehn/diaspora-docker/tree/master/compose) for an easy way to do this). 
+4. Set up a database, redis, etc (see the [compose directory](https://gitlab.koehn.com/docker/diaspora/tree/master/compose) for an easy way to do this). 
 
-5. Configure diaspora to use the database, redis, etc you set up above. Again, the [docker-compose configuration](https://gitlab.koehn.com/bkoehn/diaspora-docker/tree/master/compose) file does this all for you. 
+5. Configure diaspora to use the database, redis, etc you set up above. Again, the [docker-compose configuration](https://gitlab.koehn.com/docker/diaspora/tree/master/compose) file does this all for you. 
 
 # What this project does
 
@@ -25,7 +25,7 @@ repository/branch; see below for more information about building custom images.
 The resulting image will include all the diaspora code, RVM, Postgres Driver, package dependencies, 
 Ruby Gems, etc. It creates and uses a `diaspora` user in the image, under which the
 code is actually run. All you need to supply is a database and redis server (again,
-using the files supplied in the [compose directory](https://gitlab.koehn.com/bkoehn/diaspora-docker/tree/master/compose)
+using the files supplied in the [compose directory](https://gitlab.koehn.com/docker/diaspora/tree/master/compose)
 is the simplest way to go about this). 
 
 # Upgrading
