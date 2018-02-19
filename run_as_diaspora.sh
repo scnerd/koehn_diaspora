@@ -33,5 +33,3 @@ cp config/database.yml.example config/database.yml
 RAILS_ENV=production bin/rake assets:precompile
 rm config/diaspora.yml config/database.yml
 
-mkdir /home/diaspora/.eye
-mkfifo /home/diaspora/.eye/sock
