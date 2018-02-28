@@ -33,3 +33,4 @@ cp config/database.yml.example config/database.yml
 RAILS_ENV=production bin/rake assets:precompile
 rm config/diaspora.yml config/database.yml
 
+ln -s /tmp /home/diaspora/.eye /home/diaspora/diaspora/public/uploads/tmp /home/diaspora/diaspora/tmp
