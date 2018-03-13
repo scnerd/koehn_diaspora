@@ -36,5 +36,4 @@ rm config/diaspora.yml config/database.yml
 rm -rf /home/diaspora/diaspora/tmp
 
 ln -s /tmp /home/diaspora/.eye
-ln -s /tmp /home/diaspora/diaspora/public/uploads/tmp
 ln -s /tmp /home/diaspora/diaspora/tmp
