@@ -133,7 +133,7 @@ if [[  $_arg_gem_version ]] ; then BUILD_ARGS="$BUILD_ARGS --build-arg GEM_VERSI
 
 BUILD_ARGS="$BUILD_ARGS --build-arg DIASPORA_DOCKER_GIT_COMMIT=`git log -1 --format=%h` "
 
-docker build -t $IMAGE_NAME:$DOCKER_TAG $BUILD_ARGS .
+docker build --no-cache -t $IMAGE_NAME:$DOCKER_TAG $BUILD_ARGS .
 
 docker push $IMAGE_NAME:$DOCKER_TAG
 
