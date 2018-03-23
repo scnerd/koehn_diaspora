@@ -15,7 +15,7 @@ source "/home/diaspora/.rvm/scripts/rvm"
 rvm autolibs read-fail
 rvm install ${RUBY_VERSION} 
 
-git clone --branch ${GIT_BRANCH} ${GIT_URL}
+git clone --branch ${GIT_BRANCH} --single-branch ${GIT_URL}
 cd diaspora
 
 mkdir -p public/uploads/images
