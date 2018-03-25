@@ -93,7 +93,7 @@ RUN apt-get update && \
 
 USER diaspora
 
-WORKDIR /home/diaspora/diaspora
+WORKDIR /home/diaspora
 
 CMD ./startup.sh
 
