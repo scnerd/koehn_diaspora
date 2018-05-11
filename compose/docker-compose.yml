@@ -1,4 +1,5 @@
-version: '2'
+version: '3.6'
+
 services:
   diaspora:
     image: koehn/diaspora:latest 
@@ -9,14 +10,26 @@ services:
       - diaspora-images:/home/diaspora/diaspora/public/uploads/images
       - ./diaspora.yml:/home/diaspora/diaspora/config/diaspora.yml:ro
       - ./database.yml:/home/diaspora/diaspora/config/database.yml:ro
-    ports:
-      - '3000:3000'
+#    ports:
+#      - '3000:3000'
+    expose:
+      - 3000
+    environment:
+      - VIRTUAL_HOST='diaspora.davidmaxson.name'
+      - VIRTUAL_PORT=3000
     restart: always
+    networks:
+      - default
+#      - webnet
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+        window: 5s
 
   postgres:
     read_only: true
-    mem_limit: 8G
-    image: postgres:10.2-alpine
+    image: postgres:alpine
     tmpfs:
     - /tmp
     environment:
@@ -27,20 +40,36 @@ services:
       - postgres:/var/lib/postgresql/data
       - postgres-run:/var/run/postgresql
     restart: always
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+        window: 5s
 
   redis:
-    image: redis:latest
-    mem_limit: 384M
+    image: redis:alpine
     read_only: true
-    tmpfs:
-    - /tmp
     command: redis-server --appendonly yes
     volumes:
-      - redis:/data
+      - type: volume
+        target: /data
+        source: redis
+      - type: tmpfs
+        target: /tmp
     restart: always
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+        window: 5s
 
 volumes:
   diaspora-images:
   postgres:
   postgres-run:
   redis:
+
+networks:
+  webnet:
+    external:
+      name: webnet
